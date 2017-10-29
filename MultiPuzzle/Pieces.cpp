@@ -479,7 +479,7 @@ void Pieces::Render(Texture& _texture, std::map<BLOCKCOLOR, MPColor>& _colorMap)
 			{
 				MPColor pieceColor = _colorMap.find(m_color)->second;
 				_texture.SetColor(static_cast<char>(pieceColor.r), static_cast<char>(pieceColor.g), static_cast<char>(pieceColor.b));
-				_texture.Render((m_position.X + j) * BLOCK_SIZE, (m_position.Y + i) * BLOCK_SIZE, nullptr, BLOCK_SIZE, BLOCK_SIZE);
+				_texture.Render((m_position.X + static_cast<int>(j)) * BLOCK_SIZE, (m_position.Y + static_cast<int>(i)) * BLOCK_SIZE, nullptr, BLOCK_SIZE, BLOCK_SIZE);
 			}
 		}
 	}

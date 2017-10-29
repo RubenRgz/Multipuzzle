@@ -57,7 +57,7 @@ void Board::Render(Texture& _texture, std::map<BLOCKCOLOR, MPColor>& _colorMap)
 		{
 			MPColor blockColor = _colorMap.find(static_cast<BLOCKCOLOR>(m_matrix[i][j]))->second;
 			_texture.SetColor(static_cast<char>(blockColor.r), static_cast<char>(blockColor.g), static_cast<char>(blockColor.b));
-			_texture.Render((m_position.X + j) * BLOCK_SIZE, (m_position.Y + i) * BLOCK_SIZE, nullptr, BLOCK_SIZE, BLOCK_SIZE);
+			_texture.Render((m_position.X + static_cast<int>(j)) * BLOCK_SIZE, (m_position.Y + static_cast<int>(i)) * BLOCK_SIZE, nullptr, BLOCK_SIZE, BLOCK_SIZE);
 		}
 	}
 }
@@ -80,7 +80,7 @@ bool Board::CheckGameCollisions()
 			{
 				//Establish Y and X position in the board
 				int worldPiecePosY = countRows + m_pPiece->m_position.Y;
-				int worldPiecePosX = j + m_pPiece->m_position.X;
+				int worldPiecePosX = static_cast<int>(j) + m_pPiece->m_position.X;
 
 				//if th position is greater than board width
 				if (worldPiecePosX >= BOARD_COLUMS + m_position.X)
@@ -224,8 +224,8 @@ int Board::CheckInputCollisions()
 		{
 			if (m_pPiece->m_matrix[i][j] != 0)
 			{
-				int worldPiecePosY = (i + m_pPiece->m_position.Y) - m_position.Y;
-				int worldPiecePosX = (j + m_pPiece->m_position.X) - m_position.X;
+				int worldPiecePosY = (static_cast<int>(i) + m_pPiece->m_position.Y) - m_position.Y;
+				int worldPiecePosX = (static_cast<int>(j) + m_pPiece->m_position.X) - m_position.X;
 
 				//Actual pos collision
 				if (m_matrix[worldPiecePosY][worldPiecePosX] != 0)

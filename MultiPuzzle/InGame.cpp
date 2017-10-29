@@ -423,7 +423,7 @@ void InGame::CopyInfoToBoard()
 					countPieceParts++;
 
 					int worldPiecePosY = countRows + m_pieces.m_position.Y;
-					int worldPiecePosX = j + m_pieces.m_position.X;
+					int worldPiecePosX = static_cast<int>(j) + m_pieces.m_position.X;
 
 					m_pActiveBoard->m_matrix[(worldPiecePosY - tempBoardPos.Y)][(worldPiecePosX - tempBoardPos.X)] = color;
 
@@ -436,7 +436,7 @@ void InGame::CopyInfoToBoard()
 				else
 				{
 					int worldPiecePosY = countRows + m_pieces.m_position.Y;
-					int worldPiecePosX = j + m_pieces.m_position.X;
+					int worldPiecePosX = static_cast<int>(j) + m_pieces.m_position.X;
 
 					m_pActiveBoard->m_matrix[(worldPiecePosY - tempBoardPos.Y)][(worldPiecePosX - tempBoardPos.X)] = color;
 				}
